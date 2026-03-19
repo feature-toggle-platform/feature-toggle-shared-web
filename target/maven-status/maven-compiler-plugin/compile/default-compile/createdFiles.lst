@@ -1,0 +1,11 @@
+pl\feature\toggle\service\web\ErrorResponse.class
+pl\feature\toggle\service\web\correlation\CorrelationId.class
+pl\feature\toggle\service\web\correlation\CorrelationProvider.class
+pl\feature\toggle\service\web\actor\ActorProvider.class
+pl\feature\toggle\service\web\actor\Role.class
+pl\feature\toggle\service\web\ErrorResponse$ErrorResponseBuilder.class
+pl\feature\toggle\service\web\exception\MissingCorrelationIdException.class
+pl\feature\toggle\service\web\actor\Actor.class
+pl\feature\toggle\service\web\actor\Username.class
+pl\feature\toggle\service\web\actor\ActorId.class
+pl\feature\toggle\service\web\exception\MissingRoleException.class
