@@ -1,0 +1,4 @@
+app:
+  services:
+      CONFIGURATION: http://localhost:8081
+      WRITE: http://localhost:8082

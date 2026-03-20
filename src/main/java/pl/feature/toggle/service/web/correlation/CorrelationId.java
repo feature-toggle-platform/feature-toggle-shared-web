@@ -30,4 +30,8 @@ public record CorrelationId(
         return "correlationId";
     }
 
+    public static CorrelationId empty() {
+        return new CorrelationId(null);
+    }
+
 }
