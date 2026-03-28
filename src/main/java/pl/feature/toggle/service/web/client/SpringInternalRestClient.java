@@ -7,7 +7,6 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
 import pl.feature.toggle.service.web.correlation.CorrelationId;
 import pl.feature.toggle.service.web.correlation.CorrelationProvider;
-import pl.feature.toggle.service.web.exception.ServiceCommunicationException;
 
 @AllArgsConstructor
 class SpringInternalRestClient implements InternalRestClient {
@@ -28,7 +27,8 @@ class SpringInternalRestClient implements InternalRestClient {
 
             return requireBody(response, responseClass, serviceId, uri, HttpMethod.GET);
         } catch (RestClientException ex) {
-            throw communicationException(serviceId, uri, HttpMethod.GET, ex);
+            var context = createContext(serviceId, uri, HttpMethod.DELETE, ex);
+            throw new ServiceCommunicationException("Error sending request to remote service", context.build());
         }
     }
 
@@ -45,7 +45,8 @@ class SpringInternalRestClient implements InternalRestClient {
 
             return requireBody(response, responseClass, serviceId, uri, HttpMethod.POST);
         } catch (RestClientException ex) {
-            throw communicationException(serviceId, uri, HttpMethod.POST, ex);
+            var context = createContext(serviceId, uri, HttpMethod.DELETE, ex);
+            throw new ServiceCommunicationException("Error sending request to remote service", context.build());
         }
     }
 
@@ -67,7 +68,8 @@ class SpringInternalRestClient implements InternalRestClient {
 
             return requireBody(response, responseClass, serviceId, uri, HttpMethod.PUT);
         } catch (RestClientException ex) {
-            throw communicationException(serviceId, uri, HttpMethod.PUT, ex);
+            var context = createContext(serviceId, uri, HttpMethod.DELETE, ex);
+            throw new ServiceCommunicationException("Error sending request to remote service", context.build());
         }
     }
 
@@ -88,7 +90,8 @@ class SpringInternalRestClient implements InternalRestClient {
 
             return requireBody(response, responseClass, serviceId, uri, HttpMethod.DELETE);
         } catch (RestClientException ex) {
-            throw communicationException(serviceId, uri, HttpMethod.DELETE, ex);
+            var context = createContext(serviceId, uri, HttpMethod.DELETE, ex);
+            throw new ServiceCommunicationException("Error sending request to remote service", context.build());
         }
     }
 
@@ -123,39 +126,27 @@ class SpringInternalRestClient implements InternalRestClient {
         if (body == null) {
             throw new ServiceCommunicationException(
                     "Empty response from remote service",
-                    context(serviceId, uri, method, null)
+                    createContext(serviceId, uri, method, null).build()
             );
         }
 
         return body;
     }
 
-    private ServiceCommunicationException communicationException(
-            ServiceId serviceId,
-            String uri,
-            HttpMethod method,
-            RestClientException ex
-    ) {
-        return new ServiceCommunicationException(
-                "Remote call failed",
-                context(serviceId, uri, method, ex)
-        );
-    }
-
-    private ContextBuilder context(ServiceId serviceId, String uri, HttpMethod method, Exception ex) {
+    private ContextBuilder createContext(ServiceId serviceId, String uri, HttpMethod method, Exception ex) {
         var contextBuilder = ContextBuilder.create()
-                .with("serviceId", serviceId.name())
-                .with("uri", uri)
-                .with("method", method.name())
-                .with("correlationId", correlationId());
+                .serviceId(serviceId.name())
+                .uri(uri)
+                .method(method.name())
+                .correlationId(correlationId());
 
         if (ex != null) {
             contextBuilder
-                    .with("exceptionType", ex.getClass().getSimpleName())
-                    .with("exceptionMessage", ex.getMessage());
+                    .exceptionType(ex.getClass().getSimpleName())
+                    .exceptionMessage(ex.getMessage());
 
             if (ex instanceof HttpStatusCodeException httpException) {
-                contextBuilder.with("statusCode", httpException.getStatusCode().value());
+                contextBuilder.status(httpException.getStatusCode().value());
             }
         }
 
