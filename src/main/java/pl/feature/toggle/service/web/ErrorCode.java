@@ -1,0 +1,8 @@
+package pl.feature.toggle.service.web;
+
+public enum ErrorCode {
+    FEATURE_TOGGLE_NOT_FOUND,
+    FEATURE_TOGGLE_ALREADY_EXISTS,
+    FEATURE_TOGGLE_UPDATE_CONFLICT,
+    FEATURE_TOGGLE_ARCHIVED_OPERATION_NOT_ALLOWED
+}
