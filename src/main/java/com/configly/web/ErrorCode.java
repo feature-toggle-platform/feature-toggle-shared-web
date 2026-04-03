@@ -1,4 +1,4 @@
-package pl.feature.toggle.service.web;
+package com.configly.web;
 
 public enum ErrorCode {
     FEATURE_TOGGLE_NOT_FOUND,

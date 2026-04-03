@@ -1,7 +1,7 @@
-package pl.feature.toggle.service.web.exception;
+package com.configly.web.exception;
 
 
-import pl.feature.toggle.service.web.actor.Actor;
+import com.configly.web.actor.Actor;
 
 public class MissingRoleException extends RuntimeException {
     public MissingRoleException(Actor actor) {

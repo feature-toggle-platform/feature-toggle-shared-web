@@ -1,4 +1,4 @@
-package pl.feature.toggle.service.web.actor;
+package com.configly.web.actor;
 
 public interface ActorProvider {
     Actor current();

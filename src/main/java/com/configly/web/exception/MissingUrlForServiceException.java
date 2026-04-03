@@ -1,6 +1,6 @@
-package pl.feature.toggle.service.web.exception;
+package com.configly.web.exception;
 
-import pl.feature.toggle.service.web.client.ServiceId;
+import com.configly.web.client.ServiceId;
 
 public class MissingUrlForServiceException extends RuntimeException {
     public MissingUrlForServiceException(ServiceId serviceId) {

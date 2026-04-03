@@ -1,7 +1,7 @@
-package pl.feature.toggle.service.web;
+package com.configly.web;
 
 import lombok.Builder;
-import pl.feature.toggle.service.web.correlation.CorrelationId;
+import com.configly.web.correlation.CorrelationId;
 
 import java.time.Instant;
 

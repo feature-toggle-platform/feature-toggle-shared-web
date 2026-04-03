@@ -1,7 +1,7 @@
-package pl.feature.toggle.service.web.actor;
+package com.configly.web.actor;
 
 
-import pl.feature.toggle.service.web.exception.MissingRoleException;
+import com.configly.web.exception.MissingRoleException;
 
 import java.util.Collection;
 import java.util.Set;

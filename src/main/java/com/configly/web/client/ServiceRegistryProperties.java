@@ -1,9 +1,9 @@
-package pl.feature.toggle.service.web.client;
+package com.configly.web.client;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import pl.feature.toggle.service.web.exception.MissingUrlForServiceException;
+import com.configly.web.exception.MissingUrlForServiceException;
 
 import java.util.EnumMap;
 import java.util.Map;

@@ -1,12 +1,12 @@
-package pl.feature.toggle.service.web.client;
+package com.configly.web.client;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
-import pl.feature.toggle.service.web.correlation.CorrelationId;
-import pl.feature.toggle.service.web.correlation.CorrelationProvider;
+import com.configly.web.correlation.CorrelationId;
+import com.configly.web.correlation.CorrelationProvider;
 
 @AllArgsConstructor
 class SpringInternalRestClient implements InternalRestClient {

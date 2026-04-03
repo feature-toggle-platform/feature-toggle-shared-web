@@ -1,4 +1,4 @@
-package pl.feature.toggle.service.web.client;
+package com.configly.web.client;
 
 public interface InternalRestClient {
     <T> T get(ServiceId serviceId, String uri, Class<T> responseClass, Object... uriVariables);

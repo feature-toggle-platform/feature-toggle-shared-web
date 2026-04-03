@@ -1,4 +1,4 @@
-package pl.feature.toggle.service.web.client;
+package com.configly.web.client;
 
 import java.util.HashMap;
 import java.util.Map;

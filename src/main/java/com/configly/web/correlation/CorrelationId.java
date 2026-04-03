@@ -1,7 +1,7 @@
-package pl.feature.toggle.service.web.correlation;
+package com.configly.web.correlation;
 
 
-import pl.feature.toggle.service.web.exception.MissingCorrelationIdException;
+import com.configly.web.exception.MissingCorrelationIdException;
 
 import java.util.UUID;
 

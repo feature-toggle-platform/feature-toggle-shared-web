@@ -1,4 +1,4 @@
-package pl.feature.toggle.service.web.exception;
+package com.configly.web.exception;
 
 public class MissingCorrelationIdException extends RuntimeException {
     public MissingCorrelationIdException() {
