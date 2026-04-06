@@ -5,14 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.configly</groupId>
-    <artifactId>configly-shared-web</artifactId>
+    <artifactId>web</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>configly-shared-web</name>
+    <name>configly-web</name>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <web.model.version>1.0.0-SNAPSHOT</web.model.version>
     </properties>
 
     <dependencies>
@@ -31,6 +32,11 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
             <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.configly</groupId>
+            <artifactId>web-model</artifactId>
+            <version>${web.model.version}</version>
         </dependency>
     </dependencies>
 </project>
